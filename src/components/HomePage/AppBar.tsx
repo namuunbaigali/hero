@@ -107,8 +107,6 @@ export default function HeaderAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-     
-
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton size="large" color="inherit">
           <AccountCircle />
@@ -124,8 +122,21 @@ export default function HeaderAppBar() {
       elevation={0}
       sx={{
         backgroundColor: alpha("#C4D7FF", 0.25),
+        // boxShadowColor: alpha("#C4D7FF", 0.25),
         backdropFilter: "blur(14px)",
-        borderBottom: `1px solid ${alpha("#ffffff", 0.12)}`,
+        // borderBottom: `1px solid ${alpha("#ffffff", 0.12)}`,
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: -14,
+          height: 18,
+     backgroundColor: alpha("#C4D7FF", 0.25),
+                  boxShadowColor: alpha("#C4D7FF", 0.25),
+          backdropFilter: "blur(14px)",
+          pointerEvents: "none",
+        },
       }}
     >
       <Toolbar sx={{ minHeight: 100 }}>
@@ -172,7 +183,7 @@ export default function HeaderAppBar() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box sx={{ display: { xs: "none", md: "flex" } ,color:"gray" }}>
+        <Box sx={{ display: { xs: "none", md: "flex" }, color: "gray" }}>
           <IconButton
             size="large"
             edge="end"
@@ -180,7 +191,6 @@ export default function HeaderAppBar() {
             aria-haspopup="true"
             onClick={handleProfileMenuOpen}
             color="inherit"
-
           >
             <AccountCircle />
           </IconButton>

@@ -9,6 +9,9 @@ import { TestItem } from "../../app/tests/types";
 
 import DynamicTestModal from "../Dynamic/DynamicModal"; // ✅ modal (универсал)
 import DynamicTable from "../Dynamic/DynamicTable"; // ✅ шинэ table компонент
+import Ticker from "../Ticker"; // ✅ шинэ table компонент
+import Dashboard from "../../app/dashboard/Dashboard"; // ✅ шинэ table компонент
+
 type TabPageProps = { children: React.ReactNode; value: number; index: number };
 
 function TabPage({ children, value, index }: TabPageProps) {
@@ -81,11 +84,10 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       {/* дашбоард */}
-      <TabPage value={value} index={2}>
-        <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
-          Дашбоард
-        </Typography>
-        zczc
+      <TabPage value={value} index={0}>
+        
+     
+        <Dashboard/>
       </TabPage>
       {/*сэтгэл зүйн тест */}
       <TabPage value={value} index={1}>
@@ -129,6 +131,7 @@ export default function BasicTabs() {
         <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
           login
         </Typography>
+        <Ticker/>
         <DynamicTable />
       </TabPage>
     </Box>
