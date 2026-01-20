@@ -1,14 +1,20 @@
-import { Paper, Box, Typography, LinearProgress, alpha } from "@mui/material";
+import { Paper, Box, Typography, LinearProgress, alpha ,useTheme} from "@mui/material";
 
 const data = [
   { label: "Consultations", value: 64, color: "#5C6BC0" },
   { label: "Analysis", value: 50, color: "#FF8A65" },
-  { label: "Meetings", value: 33, color: "#EC407A" },
 ];
 
 export default function WaterChart() {
+      const theme = useTheme();
   return (
-    <Paper sx={{ p: 3, borderRadius: 4 }}>
+    <Paper sx={{ p: 3, borderRadius: 4,height:200,
+        background: `linear-gradient(180deg,
+                  ${alpha(theme.palette.primary.main, 0.10)} 0%,
+                  ${alpha(theme.palette.background.paper, 0.55)} 55%,
+                  ${alpha(theme.palette.background.paper, 0.30)} 100%)`,
+                backdropFilter: "blur(12px)",
+    }}>
       <Typography fontWeight={800} mb={2}>
         MY PLANS DONE
       </Typography>

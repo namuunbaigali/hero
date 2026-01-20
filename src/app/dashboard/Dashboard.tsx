@@ -3,10 +3,9 @@
 import { Box, Grid, Typography } from "@mui/material";
 
 import HeaderCard from "./components/HeaderCard";
-import StatCard from "./components/StatCard";
-import WaterChart from "./components/WaterChart";
-import SideAssistant from "./components/ZarMedee";
-
+import StatCard from "./components/AnhaarahAsuudal";
+import WaterChart from "./components/chart/MyPalns";
+import BarChart from "./components/chart/BarChart";
 export default function Dashboard() {
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -14,9 +13,8 @@ export default function Dashboard() {
         {/* 1️⃣ INFO */}
         <Grid size={{ xs: 12, md: 6, lg: 6 }}>
           <HeaderCard />
-          <Typography sx={{ mt: 2, color: "gray" }}>
-            Таны нийт оноо болон сэтгэл зүйн байдлын талаарх мэдээлэл
-          </Typography>
+      
+          <BarChart />
         </Grid>
 
         {/* 2️⃣ STAT */}

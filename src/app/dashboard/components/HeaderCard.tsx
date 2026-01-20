@@ -91,6 +91,8 @@ export default function InfoCard() {
           fill
           priority
           style={{ objectFit: "contain" }}
+          sizes="(max-width: 600px) 220px, 320px"
+
         />
       </Box>
     </Paper>

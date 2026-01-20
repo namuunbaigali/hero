@@ -1,4 +1,5 @@
-import { Paper, Typography, Box } from "@mui/material";
+import { Paper, Typography, Box,alpha , useTheme } from "@mui/material";
+
 
 type Item = { label: string; value: number; color: string };
 
@@ -81,8 +82,8 @@ function Donut({
   );
 }
 
-export default function StatCard({ title, total, items }: Props) {
-  const sum = items.reduce((a, b) => a + b.value, 0) || 1;
+export default function StatCard() {
+    const theme = useTheme();
 
   return (
     <Paper
@@ -90,7 +91,12 @@ export default function StatCard({ title, total, items }: Props) {
         p: 2.5,
         borderRadius: 4,
         boxShadow: "0 12px 30px rgba(0,0,0,.08)",
-        height: 120,
+        height: 200,
+          background: `linear-gradient(180deg,
+                  ${alpha(theme.palette.primary.main, 0.10)} 0%,
+                  ${alpha(theme.palette.background.paper, 0.55)} 55%,
+                  ${alpha(theme.palette.background.paper, 0.30)} 100%)`,
+                backdropFilter: "blur(12px)",
       }}
     >
       <Typography variant="caption" color="text.secondary">
