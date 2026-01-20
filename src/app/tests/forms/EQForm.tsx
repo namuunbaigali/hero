@@ -26,16 +26,14 @@ export default function EQForm({ test, onClose, onSubmit }: TestFormProps) {
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
-      <Typography sx={{ color: "#000", fontWeight: 900, mb: 1.2 }}>
-        {test.title}
-      </Typography>
+    
 
       <LinearProgress
         variant="determinate"
         value={percent}
         sx={{
           height: 10,
-          borderRadius: 999,
+          borderRadius:'50%' ,
           mb: 2,
           bgcolor: alpha("#000", 0.10),
           "& .MuiLinearProgress-bar": { borderRadius: 999 },

@@ -4,9 +4,11 @@ import * as React from "react";
 import { Box, Tabs, Tab, Typography, alpha } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material/styles";
 
-import { TestGrid, TestItem } from "../../app/tests/TestGrid";
-import DynamicTestModal from "../../app/tests/DynamicModal"; // ✅ modal (универсал)
+import { TestGrid } from "../../app/tests/TestGrid";
+import { TestItem } from "../../app/tests/types";
 
+import DynamicTestModal from "../Dynamic/DynamicModal"; // ✅ modal (универсал)
+import DynamicTable from "../Dynamic/DynamicTable"; // ✅ шинэ table компонент
 type TabPageProps = { children: React.ReactNode; value: number; index: number };
 
 function TabPage({ children, value, index }: TabPageProps) {
@@ -31,7 +33,7 @@ function TabPage({ children, value, index }: TabPageProps) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
-const [selected, setSelected] = React.useState<TestItem | null>(null);
+  const [selected, setSelected] = React.useState<TestItem | null>(null);
 
   // ✅ modal state
   const [selectedTest, setSelectedTest] = React.useState<TestItem | null>(null);
@@ -41,9 +43,9 @@ const [selected, setSelected] = React.useState<TestItem | null>(null);
       sx={{
         mt: 2,
         width: "100vw",
-        overflow: "hidden",
+        // overflow: "hidden",
         // backgroundColor: alpha("#87A2FF", 0.28),
-        border: `5px solid ${alpha("#87A2FF", 0.14)}`,
+        border: `2px solid ${alpha("#87A2FF", 0.14)}`,
         backdropFilter: "blur(14px)",
       }}
     >
@@ -53,8 +55,8 @@ const [selected, setSelected] = React.useState<TestItem | null>(null);
           py: 1,
           display: "flex",
           alignItems: "center",
-          borderBottom: `1px solid ${alpha("#ffffff", 0.12)}`,
-          background: `linear-gradient(180deg, ${alpha("#ffffff", 0.1)}, ${alpha(
+          borderBottom: `1px solid ${alpha("##87A2FF", 0.12)}`,
+          background: `linear-gradient(180deg, ${alpha("#87A2FF", 0.1)}, ${alpha(
             "#ffffff",
             0.02,
           )})`,
@@ -68,23 +70,37 @@ const [selected, setSelected] = React.useState<TestItem | null>(null);
           sx={{
             minHeight: 44,
             "& .MuiTabs-flexContainer": { gap: 0.8 },
-            "& .MuiTabs-scrollButtons": { color: alpha("#fff", 0.7) },
+            "& .MuiTabs-scrollButtons": { color: alpha("#000", 0.7) },
           }}
         >
-          <Tab label="Сэтгэл зүйн тест" sx={tabSx(value === 0)} />
-          <Tab label="Ажлын талбар" sx={tabSx(value === 1)} />
+          <Tab label="Дашбоард" sx={tabSx(value === 0)} />
+
+          <Tab label="Сэтгэл зүйн тест" sx={tabSx(value === 1)} />
+          <Tab label="Ажлын талбар" sx={tabSx(value === 2)} />
+          <Tab label=" Хүснэгт" sx={tabSx(value === 3)} />
         </Tabs>
       </Box>
-
-      {/* TAB 1 */}
-      <TabPage value={value} index={0}>
+      {/* дашбоард */}
+      <TabPage value={value} index={2}>
+        <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
+          Дашбоард
+        </Typography>
+        zczc
+      </TabPage>
+      {/*сэтгэл зүйн тест */}
+      <TabPage value={value} index={1}>
+        <Typography
+          sx={{ fontSize: 14, fontWeight: 300, mb: 1, color: "#000" }}
+        >
+          Доорх тестүүдээс сонгон өөрийгөө сорьж үзээрэй!
+        </Typography>
         {/* ✅ Grid үргэлж харагдана */}
         <TestGrid
-  onSelect={(t) => {
-    setSelected(t);
-    setOpen(true);
-  }}
-/>
+          onSelect={(t) => {
+            setSelected(t);
+            setOpen(true);
+          }}
+        />
 
         {/* ✅ Dynamic modal */}
         <DynamicTestModal
@@ -101,31 +117,52 @@ const [selected, setSelected] = React.useState<TestItem | null>(null);
         />
       </TabPage>
 
-      {/* TAB 2 */}
-      <TabPage value={value} index={1}>
+      {/* ажллын талбар */}
+      <TabPage value={value} index={2}>
         <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
-          Ажлын талбар
+          login
         </Typography>
         zczc
+      </TabPage>
+      {/* хүснэгт*/}
+      <TabPage value={value} index={3}>
+        <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
+          login
+        </Typography>
+        <DynamicTable />
       </TabPage>
     </Box>
   );
 }
 
-function tabSx(active: boolean): SxProps<Theme> {
-  return {
-    minHeight: 42,
-    px: 2,
-    borderRadius: 999,
-    textTransform: "none",
-    fontWeight: 800,
-    letterSpacing: 0.2,
-    backgroundColor: active ? alpha("#ffffff", 0.16) : "transparent",
-    border: `1px solid ${alpha("#ffffff", active ? 0.2 : 0)}`,
-    transition: "0.2s",
-    "&:hover": {
-      backgroundColor: alpha("#ffffff", active ? 0.18 : 0.1),
-      transform: "translateY(-1px)",
-    },
-  };
-}
+const tabSx = (active: boolean) => ({
+  minHeight: 40,
+  px: 2.2,
+  borderRadius: 9,
+  textTransform: "none",
+  fontWeight: "bold",
+  fontSize: 14,
+
+  // ✅ үндсэн өнгө
+  color: active ? "#fff" : alpha("#000", 0.65),
+
+  // ✅ background color
+  background: active
+    ? "linear-gradient(135deg, #A7EBFC 0%, #fff 100%)"
+    : alpha("#000", 0.05),
+
+  // ✅ animation
+  transition: "all .25s ease",
+
+  // hover
+  "&:hover": {
+    background: active
+      ? "linear-gradient(135deg, #A7EBFC 0%, #fff 100%)"
+      : alpha("#000", 0.1),
+  },
+
+  // ripple off (optional)
+  "& .MuiTouchRipple-root": {
+    opacity: 0.25,
+  },
+});

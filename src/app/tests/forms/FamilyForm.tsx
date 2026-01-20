@@ -14,9 +14,7 @@ export default function FamilyForm() {
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
-      <Typography fontWeight={900} fontSize={18} mb={2}>
-        Гэр бүлийн харилцаа
-      </Typography>
+     
 
       <Stack spacing={2}>
         <Typography>Харилцааны ерөнхий үнэлгээ: {score}</Typography>

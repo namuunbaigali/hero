@@ -14,9 +14,7 @@ export default function DepressionForm() {
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
-      <Typography fontWeight={900} fontSize={18} mb={2}>
-        Сэтгэл гутрал
-      </Typography>
+  
 
       <Stack spacing={1.2}>
         <FormControlLabel

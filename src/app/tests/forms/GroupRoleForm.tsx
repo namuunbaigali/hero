@@ -13,9 +13,6 @@ export default function GroupRoleForm() {
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
-      <Typography fontWeight={900} fontSize={18} mb={2}>
-        Бүлгийн үүрэг
-      </Typography>
 
       <Stack spacing={2}>
         <RadioGroup value={role} onChange={(e) => setRole(e.target.value)}>

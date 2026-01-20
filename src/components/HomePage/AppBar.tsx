@@ -172,7 +172,7 @@ export default function HeaderAppBar() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <Box sx={{ display: { xs: "none", md: "flex" } ,color:"gray" }}>
           <IconButton
             size="large"
             edge="end"
@@ -180,6 +180,7 @@ export default function HeaderAppBar() {
             aria-haspopup="true"
             onClick={handleProfileMenuOpen}
             color="inherit"
+
           >
             <AccountCircle />
           </IconButton>

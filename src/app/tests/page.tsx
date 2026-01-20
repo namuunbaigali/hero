@@ -4,8 +4,9 @@ import * as React from "react";
 import HomePage from "@/components/HomePage/main";
 import { Box } from "@mui/material";
 
-import { TestGrid, TestItem } from "./TestGrid";
-import DynamicTestModal from "./DynamicModal";
+import { TestGrid } from "./TestGrid";
+import type { TestItem } from "./types";
+import DynamicTestModal from "../../components/Dynamic/DynamicModal";
 
 export default function Home() {
   const [selected, setSelected] = React.useState<TestItem | null>(null);
