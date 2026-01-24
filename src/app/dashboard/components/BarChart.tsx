@@ -3,7 +3,7 @@
 import { Box, Paper, Typography, alpha, useTheme } from "@mui/material";
 import { BarChart } from "@mui/x-charts/BarChart";
 import type { JSX } from "react";
-import { dataset, valueFormatter } from "./chartTest";
+import { dataset, valueFormatter } from "./chart/BarChartDataTest";
 
 /** Null-safe formatter */
 const safeValueFormatter = (value: number | null): string => valueFormatter(value ?? 0);
@@ -16,16 +16,46 @@ export default function BarsDataset(): JSX.Element {
       elevation={0}
       sx={{
         p: { xs: 2, sm: 2.5 },
-        borderRadius: 3,
-        border: `1px solid ${alpha(theme.palette.common.white, 0.08)}`,
+        borderRadius: 4,
         background: `linear-gradient(180deg,
           ${alpha(theme.palette.primary.main, 0.10)} 0%,
           ${alpha(theme.palette.background.paper, 0.55)} 55%,
           ${alpha(theme.palette.background.paper, 0.30)} 100%)`,
-        backdropFilter: "blur(12px)",
+           border: `1px solid ${alpha("#2C394B", 0.12)}`,
+              boxShadow: `0 18px 50px ${alpha("#2C394B", 0.12)}`,
+        backdropFilter: "blur(14px)",
         overflow: "hidden",
       }}
     >
+        {/* soft blobs */}
+                 <Box
+                   sx={{
+                     position: "absolute",
+                     right: -60,
+                     top: -70,
+                     width: 240,
+                     height: 240,
+                     borderRadius: "50%",
+                     background: `radial-gradient(circle at 30% 30%,
+                       ${alpha(theme.palette.primary.main, 0.35)} 0%,
+                       ${alpha(theme.palette.primary.main, 0)} 60%)`,
+                     pointerEvents: "none",
+                   }}
+                 />
+                 <Box
+                   sx={{
+                     position: "absolute",
+                     left: -70,
+                     bottom: -90,
+                     width: 280,
+                     height: 280,
+                     borderRadius: "50%",
+                     background: `radial-gradient(circle at 60% 40%,
+                       ${alpha("#7C7BF2", 0.22)} 0%,
+                       ${alpha("#7C7BF2", 0)} 60%)`,
+                     pointerEvents: "none",
+                   }}
+                 />
       {/* Header */}
       <Box sx={{ mb: 1.5, display: "flex", alignItems: "baseline", gap: 1.2 }}>
         <Typography sx={{ fontWeight: "bold", fontSize: 16 }}>

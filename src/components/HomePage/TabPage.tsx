@@ -9,7 +9,6 @@ import { TestItem } from "../../app/tests/types";
 
 import DynamicTestModal from "../Dynamic/DynamicModal"; // ✅ modal (универсал)
 import DynamicTable from "../Dynamic/DynamicTable"; // ✅ шинэ table компонент
-import Ticker from "../Ticker"; // ✅ шинэ table компонент
 import Dashboard from "../../app/dashboard/Dashboard"; // ✅ шинэ table компонент
 
 type TabPageProps = { children: React.ReactNode; value: number; index: number };
@@ -131,7 +130,6 @@ export default function BasicTabs() {
         <Typography sx={{ fontSize: 18, fontWeight: 800, mb: 1 }}>
           login
         </Typography>
-        <Ticker/>
         <DynamicTable />
       </TabPage>
     </Box>

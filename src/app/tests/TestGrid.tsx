@@ -24,9 +24,9 @@ const sx = {
   card: (bg: string) => ({
     position: "relative",
     width: "100%",
-    minHeight: 200,
+    minHeight: 150,
     borderRadius: 3,
-    p: 1.2,
+    p: 0.5,
     background: bg,
     boxShadow: `0 12px 28px ${alpha("#000", 0.10)}`,
     transition: "0.18s ease",

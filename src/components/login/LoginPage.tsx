@@ -36,7 +36,7 @@ const inputSx = {
   "& .MuiInputLabel-root": { color: "rgba(23,26,31,0.55)" },
 };
 
-export default function LoginSplitPage({
+export default function LoginPage({
   onSuccess,
 }: {
   onSuccess: () => void;

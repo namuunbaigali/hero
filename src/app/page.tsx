@@ -2,31 +2,35 @@
 
 import { useState } from "react";
 import HomePage from "@/components/HomePage/main";
-import LoginSplitPage from "../components/PsychologicalTest/AuthSplitPage";
+import LoginPage from "../components/login/LoginPage";
+
+
 import DynamicTestModal from "../components/Dynamic/DynamicModal";
 
-import {
- 
-  Typography,
- 
-} from "@mui/material";
+import { Typography } from "@mui/material";
+
+import { adNotify } from "@/components/toast/adNotify";
 
 export default function Home() {
   const [authed, setAuthed] = useState(false);
   const [openWelcome, setOpenWelcome] = useState(false);
 
   const handleLoginSuccess = () => {
-    setAuthed(true);        // homepage руу эрх нээх
-    setOpenWelcome(true);   // welcome modal гаргах
+    setAuthed(true); // homepage руу эрх нээх
+    setOpenWelcome(true); // welcome modal гаргах
   };
 
   const handleCloseWelcome = () => {
-    setOpenWelcome(false);  // modal хаагдмагц homepage бүрэн харагдана
+    setOpenWelcome(false);
+
+    adNotify(
+      "  🔔 ШИНЭ МЭДЭЭ: Сэтгэл зүйн тест үнэгүй нээгдлээ •Өнөөдөр бүртгүүлбэл 30% хямдрал •📢 Шинэ тестүүд нэмэгдлээ. 🔔 ШИНЭ МЭДЭЭ: Сэтгэл зүйн тест үнэгүй нээгдлээ •Өнөөдөр бүртгүүлбэл 30% хямдрал •📢 Шинэ тестүүд нэмэгдлээ.",
+    );
   };
 
   // 1) Эхлээд login
   if (!authed) {
-    return <LoginSplitPage onSuccess={handleLoginSuccess} />;
+    return <LoginPage onSuccess={handleLoginSuccess} />;
   }
 
   // 2) Нэвтэрсний дараа homepage + welcome modal
@@ -39,7 +43,7 @@ export default function Home() {
         onClose={handleCloseWelcome}
         test={null}
         mode="message"
-        headerBg="linear-gradient(135deg, #0B3D2E 0%, #1B5E20 45%, #2E7D32 100%)"
+        headerBg="linear-gradient(135deg, #C6E7FF 0%, #D4F6FF 45%, #FBFBFB 100%)"
         messageTitle="Амжилттай нэвтэрлээ 🎉"
         messageText={
           <div>
@@ -47,7 +51,8 @@ export default function Home() {
               Тавтай морил!
             </Typography>
             <Typography sx={{ opacity: 0.8 }}>
-            ЭНЭХҮҮ ХЭСЭГТ СЭТГЭЛ ЗҮЙН HERO ПРОГРАММД ТАВТАЙ МОРИЛ ГЭСЭН ВИДЕО ХАРУУЛНА.
+              ЭНЭХҮҮ ХЭСЭГТ СЭТГЭЛ ЗҮЙН HERO ПРОГРАММД ТАВТАЙ МОРИЛ ГЭСЭН ВИДЕО
+              ХАРУУЛНА.
             </Typography>
           </div>
         }

@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ✅ Wrapper: background/padding/min-height бүгдийг нь цэвэрлэнэ */
+.ad-toast-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-height: auto !important;
+}
+
+/* ✅ Body: дотор padding-г авах */
+.ad-toast-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* (optional) Progress bar-ийг нуух бол */
+.Toastify__progress-bar {
+  display: none !important;
+}

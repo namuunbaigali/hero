@@ -8,7 +8,7 @@ export default function InfoCard() {
       sx={{
         position: "relative",
         height: 120, // зурагтай balance сайн
-        borderRadius: 6,
+        borderRadius: 4,
         px: 4,
         py: 2,
         mb: 2,
@@ -22,12 +22,14 @@ export default function InfoCard() {
         background: `
           linear-gradient(
             135deg,
-            #F8FAFF 0%,
-            #EEF2FF 20%,
+            #B7B1F2 0%,
+            #FFEDFA 20%,
             #F5F7FF 50%
           )
         `,
-        boxShadow: "50px 550px 30px rgba(0,0,0,.05)",
+        border: `1px solid ${alpha("#2C394B", 0.12)}`,
+              boxShadow: `0 18px 50px ${alpha("#2C394B", 0.12)}`,
+        backdropFilter: "blur(14px)",
       }}
     >
       {/* 🔵 decorative blur */}
@@ -57,7 +59,7 @@ export default function InfoCard() {
         >
           Сайн уу?{" "}
           <Box component="span" sx={{ color: "#6366F1" }}>
-            С. Бадарч
+            USER. USER
           </Box>
         </Typography>
 

@@ -118,7 +118,8 @@ export default function DynamicTestModal({
             position: "relative",
             color: alpha("#111", 0.85),
             bgcolor: alpha("#fff", 0.55),
-            border: `1px solid ${alpha("#fff", 0.7)}`,
+            border: `2px solid ${alpha("#C6E7FF", 0.7)}`,
+            boxShadow: `0 4px 30px ${alpha("#000", 0.1)}`,
             backdropFilter: "blur(10px)",
             "&:hover": { bgcolor: alpha("#fff", 0.7) },
           }}
